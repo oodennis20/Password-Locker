@@ -17,8 +17,7 @@ class TestUser(unittest.TestCase):
         self.new_user.save_user()
         self.assertEqual(len(User.users_list),1)
         
-    def tearDown(self):
-        User.users_list = []
+    
         
 class TestCredentials(unittest.TestCase):
     def test_confirm_user(self):
@@ -58,9 +57,28 @@ class TestCredentials(unittest.TestCase):
         snapchat.save_credentials()
         self.assertEqual(len(Credential.credentials_list),2)
         
-                
+    def tearDown(self):
+        User.users_list = []
+        Credential.credentials_list = []
         
+    def test_display_credentials(self):
+        '''
+        Confirm user can view correct credential details
+        '''
+        self.new_credential.save_credentials()          
+        snapchat = Credential("Clarke","snapchat","Kenty","clarkekenty")
+        snapchat.save_credentials()
+        self.assertEqual(len(Credential.display_credentials(snapchat.user_name)),1)
         
+    def test_search_social_media(self):
+        '''
+        confirm if the method returns correct social media credential
+        '''
+        self.new_credential.save_credentials()
+        snapchat = Credential("Clarke","snapchat","Kenty","clarkekenty")
+        snapchat.save_credentials()
+        credential_exists = Credential.search_social_media("snapchat")
+        self.assertEqual(credential_exists,snapchat)
         
 if __name__ == '__main__':
     unittest.main()
