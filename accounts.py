@@ -63,3 +63,9 @@ class Credential:
         for credential in cls.credentials_list:
             if credential.social_media == social_media: 
                 return credential
+            
+    @classmethod
+    def copy_social_media(cls,social_media):
+        for credential in cls.credentials_list:
+            if credential.social_media == social_media: 
+                return credential

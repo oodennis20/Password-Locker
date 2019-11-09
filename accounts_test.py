@@ -79,6 +79,14 @@ class TestCredentials(unittest.TestCase):
         snapchat.save_credentials()
         credential_exists = Credential.search_social_media("snapchat")
         self.assertEqual(credential_exists,snapchat)
+    
+    def test_copy_credential(self):
+        '''
+        Test to check if the copy credential copy will copy credential details correctly
+        '''
+        self.new_credential.save_credentials()
+        Credential.copy_social_media("Clarke")
+        self.assertEqual(self.new_credential.social_media,pyperclip.paste())
         
 if __name__ == '__main__':
     unittest.main()
