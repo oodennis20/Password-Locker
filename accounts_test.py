@@ -45,9 +45,9 @@ class TestCredentials(unittest.TestCase):
         Confirm that credential creation is as expected
         '''
         self.assertEqual(self.new_credential.user_name,"Clarke")
-        self.assertEqual(self.new_credential.user_social_media,"Instagram")
-        self.assertEqual(self.new_credential.user_account_name,"Kent")
-        self.assertEqual(self.new_credential.user_password,"clarkekent")
+        self.assertEqual(self.new_credential.social_media,"Instagram")
+        self.assertEqual(self.new_credential.account_name,"Kent")
+        self.assertEqual(self.new_credential.password,"clarkekent")
                 
         
         
