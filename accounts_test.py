@@ -1,4 +1,5 @@
 import unittest
+import pyperclip
 from accounts import User, Credential
 
 class TestUser(unittest.TestCase):
@@ -85,8 +86,18 @@ class TestCredentials(unittest.TestCase):
         Test to check if the copy credential copy will copy credential details correctly
         '''
         self.new_credential.save_credentials()
-        Credential.copy_social_media("Clarke")
-        self.assertEqual(self.new_credential.social_media,pyperclip.paste())
+        snapchat =  Credential("Clarke","snapchat","Kenty","clarkekenty")
+        snapchat.save_credentials()
+        
+        find_credential = None
+        for credential in Credential.user_credentials_list:
+            find_credential = Credential.search_social_media(credential.social_media)
+            return pyperclip.copy(find_credential.password)
+        credential.copy_credential(self.new_credential.social_media)
+        self.assertEqual("clarkekenty",pyperclip.paste())
+        print(pyperclip.paste())
+        
+        
         
 if __name__ == '__main__':
     unittest.main()
