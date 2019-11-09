@@ -1,5 +1,5 @@
 import unittest
-from accounts import User
+from accounts import User, Credential
 
 class TestUser(unittest.TestCase):
     def setUp(self):
@@ -20,6 +20,20 @@ class TestUser(unittest.TestCase):
     def tearDown(self):
         User.users_list = []
         
+class TestCredentials(unittest.TestCase):
+    def test_confirm_user(self):
+        self.new_user = User("Clyde","Dennis","lit")
+        self.new_user.save_user()
+        userZ= User("Clyde","Dennis","lit")   
+        userZ.save_user()
+        
+        for user in User.users_list:
+            if user.first_name == userZ.first_name and user.password == userZ.password:
+                active_user = user.first_name
+                return active_user
+            
+        self.assertEqual(active_user,Credential.confirm_user(userZ.password,userZ.first_name))
+                
         
         
         
