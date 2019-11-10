@@ -1,5 +1,7 @@
 import pyperclip
-global users
+import string
+import random
+
 class User:
     '''
     Class to create new user accounts and save them to help access the pswd locker
@@ -25,7 +27,7 @@ class Credential:
     '''
     # class variables
     credentials_list = []
-    user_credentials_list = []
+    # user_credentials_list = []
     
     @classmethod
     def confirm_user(cls,first_name,password):
@@ -51,14 +53,19 @@ class Credential:
     def save_credentials(self):
         Credential.credentials_list.append(self)
     
-    
+    def generate_password(self):
+        '''
+        Function to generate random passwords for social media accounts
+        '''
+        pswdchar = string.printable
+        length = int(input('Enter password length desired: '))
+        gen_pswd= ''
+        for pswdchar in range(length):
+            gen_pswd += random.choice(pswdchar)
+        return gen_pswd
     @classmethod
-    def display_credentials(cls,user_name):
-        user_credentials_list = []
-        for credential in cls.credentials_list:
-            if credential.user_name == user_name:
-                user_credentials_list.append(credential)
-                return user_credentials_list
+    def display_credentials(cls):
+        return cls.credentials_list
 
     @classmethod
     def search_social_media(cls,social_media):
@@ -66,7 +73,14 @@ class Credential:
             if credential.social_media == social_media: 
                 return credential
             
-    # @classmethod
-    # def copy_social_media(cls,social_media):
-    #     find_credential = Credential.search_social_media()
-    #     return pyperclip.copy(find_credential.password)
+    @classmethod
+    def copy_social_media(cls,social_media):
+        find_credential = Credential.search_social_media(social_media)
+        return pyperclip.copy(find_credential.password)
+    @classmethod
+    def copy_password(cls,social_media):
+        '''
+		Class method that copies a credential's password of a specific social media site after the credential's social media name is entered
+		'''
+        collect_pass = Credential.search_social_media(social_media)
+        return pyperclip.copy(collect_pass.password)
