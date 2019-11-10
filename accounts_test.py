@@ -81,21 +81,21 @@ class TestCredentials(unittest.TestCase):
         credential_exists = Credential.search_social_media("snapchat")
         self.assertEqual(credential_exists,snapchat)
     
-    def test_copy_credential(self):
-        '''
-        Test to check if the copy credential copy will copy credential details correctly
-        '''
-        self.new_credential.save_credentials()
-        snapchat =  Credential("Clarke","snapchat","Kenty","clarkekenty")
-        snapchat.save_credentials()
+    # def test_copy_credential(self):
+    #     '''
+    #     Test to check if the copy credential copy will copy credential details correctly
+    #     '''
+    #     self.new_credential.save_credentials()
+    #     snapchat =  Credential("Clarke","snapchat","Kenty","clarkekenty")
+    #     snapchat.save_credentials()
         
-        find_credential = None
-        for credential in Credential.user_credentials_list:
-            find_credential = Credential.search_social_media(credential.social_media)
-            return pyperclip.copy(find_credential.password)
-        credential.copy_credential(self.new_credential.social_media)
-        self.assertEqual("clarkekenty",pyperclip.paste())
-        print(pyperclip.paste())
+    #     find_credential = None
+    #     for credential in Credential.user_credentials_list:
+    #         find_credential = Credential.search_social_media(credential.social_media)
+    #         return pyperclip.copy(find_credential.password)
+    #     credential.copy_credential(self.new_credential.social_media)
+    #     self.assertEqual("clarkekenty",pyperclip.paste())
+    #     print(pyperclip.paste())
         
         
         
