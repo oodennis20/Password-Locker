@@ -1,4 +1,3 @@
-import pyperclip
 import string
 import random
 
@@ -64,6 +63,9 @@ class Credential:
     def display_credentials(cls):
         return cls.credentials_list
 
+    def delete_contact(self):
+        Credential.credentials_list.remove(self)
+    
     @classmethod
     def search_social_media(cls,social_media):
         for credential in cls.credentials_list:
@@ -71,13 +73,9 @@ class Credential:
                 return credential
             
     @classmethod
-    def copy_social_media(cls,social_media):
-        find_credential = Credential.search_social_media(social_media)
-        return pyperclip.copy(find_credential.password)
-    @classmethod
-    def copy_password(cls,social_media):
-        '''
-		Class method that copies a credential's password of a specific social media site after the credential's social media name is entered
-		'''
-        collect_pass = Credential.search_social_media(social_media)
-        return pyperclip.copy(collect_pass.password)
+    def credential_exists(cls,social_media):
+        for credential in cls.credentials_list:
+            if credential.social_media == social_media: 
+                return True
+            
+        return False

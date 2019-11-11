@@ -1,5 +1,4 @@
 #! /usr/bin/env python3.6
-import pyperclip
 from accounts import User, Credential
 import random
 def create_user(fstname,lstname,password):
@@ -43,9 +42,17 @@ def display_credentials():
     Display credentials saved by user
     '''
     return Credential.display_credentials()
+def credential_exists(social_media):
+    return Credential.credential_exists(social_media)
 
-def copy_password(social_media):
-    return Credential.copy_password(social_media)
+def search_social_media(cls,social_media):
+    return Credential.search_social_media(social_media) 
+
+def search2_social_media(social_media):
+    return Credential.search_social_media(social_media) 
+
+def delete_credential(social_media):
+    Credential.credentials_list.remove(social_media)
     
 def main():
     print('')
@@ -82,7 +89,7 @@ def main():
                 print(' ')
                 while True:
                     print("$"*60)
-                    print('Navigation codes: \n cc-Create Social Media credentials \n dc-Display Credentials \n copy-Copy Social Media Password \n ex-Exit')
+                    print('Navigation codes: \n cc-Create Social Media credentials \n dc-Display Credentials\n del-Delete Credential\n ex-Exit')
                     short_code = input('Choose an option: ').lower().strip()
                     print("$"*60)
                     if short_code == 'ex':
@@ -100,7 +107,7 @@ def main():
                         while True:
                                 print(' ')
                                 print("$"*60)
-                                print('Please choose an option for entering a password: \n ep-enter existing password \n gp-generate a password \n ex-exit')
+                                print('Please choose an option for entering a password: \n ep-enter existing password \n gp-generate a password\n ex-exit')
                                 pswd_options = input('Enter an option: ').lower().strip()
                                 
                                 print("$"*60)
@@ -143,13 +150,20 @@ def main():
                             print("Sorry, You don't have any credentials")
                             
                             print(' ')
-
-                    elif short_code == 'copy':
-                        print(' ')
-                        choose = input('Enter the social_media name for the credential password to copy: ')
+                    elif short_code == 'del':
+                        print("App to delete")
+                        yourname = input().lower()
                         
-                        copy_password(choose)
-                        print('Password copied successfully')
+                        if credential_exists(yourname):
+                            yournames = search2_social_media(yourname)
+                            delete_credential(yournames)
+                            print("Deleted succesfully")
+                            
+                        else:
+                            print("Credential does not exist")
+                            
+                            
+                            
                     else:
                         print(' ')
                         print('Sorry! Incorrect option entered. Try again.')

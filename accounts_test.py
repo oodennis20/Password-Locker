@@ -1,5 +1,4 @@
 import unittest
-import pyperclip
 from accounts import User, Credential
 
 class TestUser(unittest.TestCase):
@@ -17,6 +16,8 @@ class TestUser(unittest.TestCase):
     def test_save_user(self):
         self.new_user.save_user()
         self.assertEqual(len(User.users_list),1)
+        
+   
         
     
         
@@ -64,6 +65,9 @@ class TestCredentials(unittest.TestCase):
         instagram.save_credentials()
         self.assertEqual(Credential.display_credentials(),Credential.credentials_list)
         
+    def test_delete_contact(self):
+        Credential.credentials_list = []
+    
     def test_search_social_media(self):
         '''
         Test to confirm if the method returns the correct social media credential
@@ -72,18 +76,13 @@ class TestCredentials(unittest.TestCase):
         instagram = Credential('clarke','instagram','kent','clarkekent')
         instagram.save_credentials()
 
-        
-    def test_copy_password(self):#uses pyperclip
-        '''
-        Test to check if the copy credential copy will copy credential details correctly
-        '''
-        self.new_credential.save_credentials()
-        instagram =  Credential('clarke','instagram','kent','clarkekent')
+    def test_credential_exists(self):
+        self.new_credential.save_credentials()          
+        instagram = Credential('clarke','instagram','kent','clarkekent')
         instagram.save_credentials()
-        Credential.copy_password('instagram')
-        self.assertEqual(self.new_credential.password,pyperclip.paste())
-
         
+        credential_exists = Credential.credential_exists("instagram")
+        self.assertTrue(credential_exists)
         
         
 if __name__ == '__main__':
