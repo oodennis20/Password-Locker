@@ -57,12 +57,9 @@ class Credential:
         '''
         Function to generate random passwords for social media accounts
         '''
-        pswdchar = string.printable
-        length = int(input('Enter password length desired: '))
-        gen_pswd= ''
-        for pswdchar in range(length):
-            gen_pswd += random.choice(pswdchar)
-        return gen_pswd
+        pswdchar = ["cddj1k", "fg2eef", "thgsmx"]
+        
+        print(random.choice(pswdchar))
     @classmethod
     def display_credentials(cls):
         return cls.credentials_list
