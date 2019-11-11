@@ -13,14 +13,14 @@ As a user I would like:
 * Copy my credentials to the clipboard
 
 ## Specifications
-Display codes for navigation:  Hello!!, choose an option: ca-Create Account, li-Log In, ex-Exit 
-Display prompt for creating an account:Enter your first name, last name and password
-Display prompt for login in:Enter your account name and password
-Display codes for navigation:Choose an option: cc - Create Credential, dc - Display Credentials, copy - Copy Credential, ex - exit
-Display prompt for creating a credential: Enter the social media name, your username/social media handle and password which can be auto generated after you specify the length or input your own 
-Display a list of credentials: Prints a list of saved credentials
-Display prompt for which credential to copy : Enter the social media name of the credential you wish to copy.
-Exit application : Exit the current navigation stage
+* Display codes for navigation:  Hello!!, choose an option: ca-Create Account, li-Log In, ex-Exit 
+* Display prompt for creating an account:Enter your first name, last name and password
+* Display prompt for login in:Enter your account name and password
+* Display codes for navigation:Choose an option: cc - Create Credential, dc - * * * * Display Credentials: copy - Copy Credential, ex - exit
+* Display prompt for creating a credential: Enter the social media name, your username/social media handle and password which can be auto generated after you specify the length or input your own 
+* Display a list of credentials: Prints a list of saved credentials
+* Display prompt for which credential to copy : Enter the social media name of the credential you wish to copy.
+* Exit application : Exit the current navigation stage
 
 ## SetUp / Installation Requirements
 ### Prerequisites
