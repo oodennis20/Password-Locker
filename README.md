@@ -31,12 +31,12 @@ As a user I would like:
 * In your terminal:
 
         $ git clone my repo
-        $ cd Python-pwd-locker
+        $ cd Password-Locker
 
 ## Testing the Application
 * To run the tests for the class file:
 
-    $ python3.6 smaccounts_test.py
+    $ python3.6 accounts_test.py
 
 ## Technologies Used
 * Python3.6
